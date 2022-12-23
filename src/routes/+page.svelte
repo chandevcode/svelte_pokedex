@@ -2,7 +2,9 @@
 	import { onMount } from 'svelte';
 	import { pokemonStore } from '../store';
 
-	import Start from '$lib/icons/Star.svelte';
+	import { fade, fly, blur, slide, draw, crossfade } from 'svelte/transition';
+
+	import Star from '$lib/icons/Star.svelte';
 	import ChevronRight from '$lib/icons/ChevronRight.svelte';
 	import Modal from '$lib/components/Modal.svelte';
 
@@ -52,3 +54,78 @@
 		pokemonToOpen = [];
 	};
 </script>
+
+<main class={`py-20 bg-gray-50 ${isLoading ? 'h-screen' : ''}`}>
+	<h1 class="text-4xl font-bold text-center">
+		<span class="text-gray-800"> Svelte</span>
+
+		<span class="text-purple-600"> Pokedex</span>
+	</h1>
+	<div class=" w-4/5 m-auto mt-10 grid sm:grid-cols-3 grid-cols-1 gap-20">
+		{#if !isLoading}
+			{#each pokemonWithAdditionalInfo.slice(0, numberOfPokemonsToShow) as pokemon}
+				<div
+					class="relative h-72 bg-white rounded-lg shadow-lg flex flex-col justify-between
+					items-center overflow-hidden group"
+					transition:slide={{ x: 200, duration: 4000 }}
+				>
+					<img
+						src={pokemon['sprites']['other']['official-artwork']['front_default']}
+						alt={pokemon.name}
+						class="w-40 mt-4"
+					/>
+					<div
+						class="absolute h-full w-full transform translate-y-3/4 p-4 bg-purple-600 text-center text-white transition-all duration-700 ease-in-out group-hover:translate-y-0"
+					>
+						{#if pokemon.isFavourite}
+							<Star
+								favouriteClick={() => favouriteClick(pokemon.id)}
+								additionalClass="absolute top-5 left-5 fill-current  text-yellow-500 transition-all duration-700 ease-in-out hover:animate-pulse hover:cursor-pointer group-hover:text-opacity-100 "
+							/>
+						{:else}
+							<Star
+								favouriteClick={() => favouriteClick(pokemon.id)}
+								additionalClass="absolute top-5 left-5  stroke-current text-white text-opacity-0 transition-all duration-700 ease-in-out hover:animate-pulse hover:cursor-pointer group-hover:text-opacity-100 "
+							/>
+						{/if}
+						<p class="text-2xl font-bold capitalize">
+							{pokemon.name}
+						</p>
+						<ChevronRight
+							favouriteClick={() => openPokemonModal(pokemon.id)}
+							additionalClass="absolute top-5 right-5 stroke-current text-white text-opacity-0 transition-all duration-700 ease-in-out hover:animate-pulse hover:cursor-pointer group-hover:text-opacity-100 
+              
+        "
+						/>
+						<div class="mt-10 w-8/12 m-auto">
+							{#each pokemon.stats as stat}
+								<p class="flex justify-between text-base border-b-2 mb-1">
+									<span class="font-bold capitalize">{stat.stat.name}</span>
+									<span>{stat.base_stat}</span>
+								</p>
+							{/each}
+						</div>
+					</div>
+				</div>
+			{/each}
+		{:else}
+			<div class="relative h-72 bg-white rounded-lg shadow-lg animate-pulse" />
+			<div class="relative h-72 bg-white rounded-lg shadow-lg animate-pulse" />
+			<div class="relative h-72 bg-white rounded-lg shadow-lg animate-pulse" />
+		{/if}
+	</div>
+	{#if !isLoading && numberOfPokemonsToShow < pokemonWithAdditionalInfo.length}
+		<div class=" mt-10 flex justify-center items-center ">
+			<button
+				on:click={() => (numberOfPokemonsToShow = numberOfPokemonsToShow + 12)}
+				type="button"
+				class="py-2 px-4 rounded bg-purple-600 text-white font-bold transition-all duration-700 ease-in-out hover:bg-purple-900 focus:outline-none"
+			>
+				Load More
+			</button>
+		</div>
+	{/if}
+	{#if isModalOpen}
+		<Modal {closePokemonModal} pokemonToOpen={pokemonToOpen[0]} />
+	{/if}
+</main>

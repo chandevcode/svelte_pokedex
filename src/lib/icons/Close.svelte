@@ -8,6 +8,7 @@
 	xmlns="http://www.w3.org/2000/svg"
 	class={`h-10 w-10 ${additionalClass}`}
 	fill="none"
+	stroke="black"
 	viewBox="0 0 24 24"
 >
 	<path

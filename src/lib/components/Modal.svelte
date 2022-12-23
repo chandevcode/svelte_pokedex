@@ -36,9 +36,9 @@
 		{closePokemonModal}
 	/>
 	<div
-		class="h-5/6 w-5/6 md:w-4/6 bg-white rounded-lg shadow-lg md:grid md:grind-cols-2 overflow-scroll md:overflow-hidden"
+		class="h-5/6 w-5/6 md:w-4/6 bg-white rounded-lg shadow-lg md:grid md:grid-cols-2 overflow-scroll md:overflow-hidden"
 	>
-		<div class="relative border-8 border-b-0 border-red-600">
+		<div class="relative border-8 border-b-0 border-purple-600">
 			<div class="h-4/5 flex justify-center items-center">
 				<img
 					src={pokemonToOpen['sprites']['other']['official-artwork']['front_default']}
@@ -47,7 +47,7 @@
 				/>
 			</div>
 			<div
-				class="absolute bottom-0 h-1/5 w-full flex justify-center items-center bg-red-600 text-center text-white"
+				class="absolute bottom-0 h-1/5 w-full flex justify-center items-center bg-purple-600 text-center text-white"
 			>
 				<p class="text-2xl font-bold capitalize">{pokemonToOpen.name}</p>
 			</div>
@@ -64,7 +64,7 @@
 						/>
 					</div>
 					<p class="text-sm italic text-center text-gray-700 ">{pokemonDescription}</p>
-					<div class="my-3 md:my-5 flex justify-cente overflow-hidden">
+					<div class="my-3 md:my-5 flex justify-center overflow-hidden">
 						<PokemonBanner
 							pokemonName={pokemonToOpen.name}
 							pokemonFrontImage={pokemonToOpen.sprites.front_default}

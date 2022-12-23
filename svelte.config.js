@@ -5,7 +5,12 @@ const config = {
 	kit: {
 		adapter: adapter()
 	},
-	preprocess: vitePreprocess()
+	preprocess: vitePreprocess(),
+	vitePlugin: {
+		experimental: {
+			inspector: true
+		}
+	}
 };
 
 export default config;
