@@ -6,6 +6,6 @@
 </script>
 
 {#each Array(numberOfRepetitions) as _, index}
-	<img src={pokemonFrontImage} alt={pokemonName} class=" w-10 key={index}" />
-	<img src={pokemonBackImage} alt={pokemonName} class=" w-10 key={index}" />
+	<img src={pokemonFrontImage} alt={pokemonName} class=" w-30 key={index}" />
+	<img src={pokemonBackImage} alt={pokemonName} class=" w-30 key={index}" />
 {/each}

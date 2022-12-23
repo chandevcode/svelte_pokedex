@@ -65,7 +65,7 @@
 							numberOfRepititions={5}
 						/>
 					</div>
-					<p class="text-sm italic text-center text-gray-700 ">{pokemonDescription}</p>
+					<p class="text-md italic text-center text-gray-700 ">"{pokemonDescription}"</p>
 					<div class="my-3 md:my-5 flex justify-center overflow-hidden">
 						<PokemonBanner
 							pokemonName={pokemonToOpen.name}
@@ -78,10 +78,10 @@
 				<div class="grid grid-cols-3 gap-4">
 					{#each pokemonToOpen.stats as stat}
 						<div class="h-[75px] flex flex-col justify-center items-center text-center">
-							<p class="text-gray-700">
+							<p class="text-2xl placeholder:text-gray-700">
 								{stat.base_stat}
 							</p>
-							<p class="text-[10px] text-gray-300">{stat.stat_name}</p>
+							<p class="text-sm text-gray-400">{stat.stat.name}</p>
 						</div>
 					{/each}
 				</div>

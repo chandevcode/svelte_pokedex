@@ -82,12 +82,12 @@
 		/>
 	</div>
 
-	<div class=" w-4/5 m-auto mt-10 grid md:grid-cols-4 grid-cols-2 gap-10">
+	<div class=" w-4/5 m-auto mt-10 grid md:grid-cols-3 grid-cols-1 gap-5  ">
 		{#if !isLoading}
 			{#each pokemonWithAdditionalInfo.slice(0, numberOfPokemonsToShow) as pokemon}
 				<div
 					class="relative h-72 bg-white rounded-lg shadow-lg flex flex-col justify-between
-					items-center overflow-hidden group"
+					items-center overflow-hidden group shadow-gray-400 "
 					transition:slide={{ x: 200, duration: 2500 }}
 				>
 					<img
@@ -118,7 +118,7 @@
               
         "
 						/>
-						<div class="mt-10 w-8/12 m-auto">
+						<div class="mt-6 w-8/12 m-auto">
 							{#each pokemon.stats as stat}
 								<p class="flex justify-between text-base border-b-2 mb-1">
 									<span class="font-bold capitalize">{stat.stat.name}</span>
