@@ -6,6 +6,7 @@
 	import PokemonBanner from './PokemonBanner.svelte';
 	export let closePokemonModal;
 	export let pokemonToOpen;
+	export let isModalOpen = false;
 
 	let pokemonInfo;
 	let pokemonDescription;
@@ -31,6 +32,7 @@
 
 <div
 	class="fixed top-1/2 left-1/2 transform translate -translate-y-2/4 -translate-x-2/4 h-screen w-screen bg-gray-200 bg-opacity-50 backdrop-filter backdrop-blur flex justify-center items-center"
+	on:click
 >
 	<Close
 		additionalClass=" absolute top-3 md:top-5 righ-3 md:right-5 stoke-current text-black text-opacity-50 transition-all duration-500 ease-in-out hover:text-opacity-100 hover:cursor-pointer"

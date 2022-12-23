@@ -148,6 +148,6 @@
 		</div>
 	{/if}
 	{#if isModalOpen}
-		<Modal {closePokemonModal} pokemonToOpen={pokemonToOpen[0]} />
+		<Modal {closePokemonModal} pokemonToOpen={pokemonToOpen[0]} on:click={closePokemonModal} />
 	{/if}
 </main>
