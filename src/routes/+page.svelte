@@ -9,7 +9,7 @@
 	import Modal from '$lib/components/Modal.svelte';
 
 	let numberOfPokemonsToFetch = 100;
-	let numberOfPokemonsToShow = 9;
+	let numberOfPokemonsToShow = 8;
 	let pokemons = [];
 	let pokemonWithAdditionalInfo = 0;
 
@@ -82,7 +82,7 @@
 		/>
 	</div>
 
-	<div class=" w-4/5 m-auto mt-10 grid sm:grid-cols-3 grid-cols-1 gap-20">
+	<div class=" w-4/5 m-auto mt-10 grid md:grid-cols-4 grid-cols-2 gap-10">
 		{#if !isLoading}
 			{#each pokemonWithAdditionalInfo.slice(0, numberOfPokemonsToShow) as pokemon}
 				<div
@@ -101,20 +101,20 @@
 						{#if pokemon.isFavourite}
 							<Star
 								favouriteClick={() => favouriteClick(pokemon.id)}
-								additionalClass="absolute top-5 left-5 fill-current  text-yellow-500 transition-all duration-700 ease-in-out hover:animate-pulse hover:cursor-pointer group-hover:text-opacity-100 "
+								additionalClass="absolute top-5 left-3 fill-current  text-yellow-500 transition-all duration-700 ease-in-out hover:animate-pulse hover:cursor-pointer group-hover:text-opacity-100 "
 							/>
 						{:else}
 							<Star
 								favouriteClick={() => favouriteClick(pokemon.id)}
-								additionalClass="absolute top-5 left-5  stroke-current text-white text-opacity-0 transition-all duration-700 ease-in-out hover:animate-pulse hover:cursor-pointer group-hover:text-opacity-100 "
+								additionalClass="absolute top-5 left-3  stroke-current text-white text-opacity-0 transition-all duration-700 ease-in-out hover:animate-pulse hover:cursor-pointer group-hover:text-opacity-100 "
 							/>
 						{/if}
-						<p class="text-2xl font-bold capitalize">
+						<p class="text-lg font-bold capitalize">
 							{pokemon.name}
 						</p>
 						<ChevronRight
 							favouriteClick={() => openPokemonModal(pokemon.id)}
-							additionalClass="absolute top-5 right-5 stroke-current text-white text-opacity-0 transition-all duration-700 ease-in-out hover:animate-pulse hover:cursor-pointer group-hover:text-opacity-100 
+							additionalClass="absolute top-5 right-2 stroke-current text-white text-opacity-0 transition-all duration-700 ease-in-out hover:animate-pulse hover:cursor-pointer group-hover:text-opacity-100 
               
         "
 						/>
