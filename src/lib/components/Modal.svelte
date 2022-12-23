@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { slide } from 'svelte/transition';
 
 	import Close from '../icons/Close.svelte';
 	import PokemonBanner from './PokemonBanner.svelte';
@@ -36,7 +37,8 @@
 		{closePokemonModal}
 	/>
 	<div
-		class="h-5/6 w-5/6 md:w-4/6 bg-white rounded-lg shadow-lg md:grid md:grid-cols-2 overflow-scroll md:overflow-hidden"
+		class="h-5/6 w-5/6 md:w-4/6 bg-white rounded-lg shadow-lg md:grid md:grid-cols-2 overflow-scroll md:overflow-hidden "
+		transition:slide={{ x: 300, duration: 1000 }}
 	>
 		<div class="relative border-8 border-b-0 border-purple-600">
 			<div class="h-4/5 flex justify-center items-center">
