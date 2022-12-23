@@ -9,7 +9,7 @@
 	import Modal from '$lib/components/Modal.svelte';
 
 	let numberOfPokemonsToFetch = 100;
-	let numberOfPokemonsToShow = 8;
+	let numberOfPokemonsToShow = 9;
 	let pokemons = [];
 	let pokemonWithAdditionalInfo = 0;
 
@@ -63,6 +63,7 @@
 			numberOfPokemonsToShow = 1;
 		} else {
 			pokemonWithAdditionalInfo = [...$pokemonStore];
+			numberOfPokemonsToShow = 9;
 		}
 	}
 </script>
